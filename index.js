@@ -10,8 +10,8 @@ async function run() {
   // MAC: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --no-first-run --no-default-browser-check --user-data-dir=$(mktemp -d -t 'chrome-remote_data_dir')
   // PC: start chrome.exe –remote-debugging-port=9222
   // Note: this url changes each time the command is run.
-  const url = 'localhost:9223';
-  const id = 'BA7D54678E00FDA621034A1E51367601';
+  const url = 'localhost:9222';
+  const id = 'ED4A32135E91AE4B26530407792A641A';
   const wsChromeEndpointUrl = `ws://${url}/devtools/page/${id}`;
 
   try {
@@ -21,6 +21,7 @@ async function run() {
   
     const page = await browser.pages();
     console.log(page);
+    await page.waitForNavigation();
   } catch (e) {
     console.log(e);
   }
