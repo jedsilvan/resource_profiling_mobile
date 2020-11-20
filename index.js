@@ -12,16 +12,16 @@ async function run() {
   // Note: this url changes each time the command is run.
   const url = 'localhost:9222';
   const id = 'ED4A32135E91AE4B26530407792A641A';
-  const wsChromeEndpointUrl = `ws://${url}/devtools/page/${id}`;
+  const wsChromeEndpointUrl = `ws://${url}/devtools/browser/${id}`;
 
   try {
     const browser = await puppeteer.connect({
         browserWSEndpoint: wsChromeEndpointUrl
     });
   
-    const page = await browser.pages();
-    console.log(page);
-    await page.waitForNavigation();
+    const [page] = await browser.pages();
+    const noOfCards = await page.$$eval('#scroll-contents > div', divs => divs.length);
+    console.log("test", noOfCards, page);
   } catch (e) {
     console.log(e);
   }
