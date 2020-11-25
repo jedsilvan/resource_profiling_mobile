@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jedsilvan/resource_profiling_mobile#readme",
   "dependencies": {
+    "axios": "^0.21.0",
+    "buffer-image-size": "^0.6.4",
     "puppeteer-core": "^5.4.1"
   }
 }
